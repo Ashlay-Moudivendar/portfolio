@@ -1,3 +1,7 @@
+:root {
+    --golden-color: linear-gradient(to right top, #ECC440, #FFFA8A,#DDAC17,#FFFF95);
+}
+
 html {
     font-size: 16px;
 }
@@ -9,7 +13,15 @@ body {
     color: #EEF0FC;
     margin: 0;
     font-family: Manrope, sans-serif;
-    padding-top: 3rem;
+    padding-top: 3.65rem;
+}
+
+em {
+    font-style: normal;
+    background-image: var(--golden-color);
+    color: transparent;
+    background-clip: text;
+    font-weight: 600;
 }
 
 header {
@@ -41,7 +53,56 @@ header {
     }
 }
 
-
 section {
     font-family: 'Sora', sans-serif;
+    padding: 5rem 6rem;
+}
+
+.intro {
+    display: flex;
+    justify-content: space-between;
+    height: 28rem;
+}
+
+.content {
+    width: 60rem;
+    text-align: center;
+    align-self: center;
+
+    & p:first-child {
+        font-weight: 600;
+        font-family: Manrope;
+        font-size: 2.5rem;
+        margin-bottom: 0;
+    }
+
+    & p:nth-child(2) {
+        font-family: Manrope;
+        font-size: 1.5rem;
+        font-weight: 200;
+    }
+
+    & p:last-child {
+        font-size: 1.25rem;
+        width: 80%;
+        margin: auto;
+        margin-top: 4rem;
+    }
+}
+
+.square {
+    height: 7rem;
+    min-width: 7rem;
+    border-width: 5px;
+    border-style: solid;
+    border-image-source: var(--golden-color);
+}
+
+.sq-left-top {    
+    border-image-slice: 1 0 0 1 ;
+}
+
+.sq-right-bottom {    
+    border-image-slice: 0 1 1 0;
+    align-self: flex-end;
 }
