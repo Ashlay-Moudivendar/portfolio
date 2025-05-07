@@ -10,10 +10,6 @@
   --yellow-golden: #ffff95;
 }
 
-html {
-  font-size: 16px;
-}
-
 body {
   background: #101d42;
   background: linear-gradient(#101d42, #1d28a0);
@@ -61,10 +57,6 @@ header {
   }
 }
 
-.section-body {
-  font-family: "Sora", sans-serif;
-  padding: 5rem 6rem;
-}
 
 .intro {
   display: flex;
@@ -113,6 +105,11 @@ header {
 .sq-right-bottom {
   border-image-slice: 0 1 1 0;
   align-self: flex-end;
+}
+
+.section-body {
+  font-family: "Sora", sans-serif;
+  padding: 5rem 6rem;
 }
 
 .section-title {
