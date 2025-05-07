@@ -29,6 +29,7 @@ For version control and deployment, I have used GitHub and Vercel.
 4. Gradient color for backgrounds, borders and texts
 5. Variables in CSS
 6. Create shapes with *border* attribute
+7. Web components without component-based frameworks
 
 ## Author
 
