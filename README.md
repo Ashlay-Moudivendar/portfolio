@@ -21,6 +21,15 @@ Additionally, for now, there is no API or database involved.
 
 For version control and deployment, I have used GitHub and Vercel.
 
+## What I learned ?
+
+1. Integration of Google fonts
+2. Benefits of using *rem* (or *em*) instead of *px*
+3. Setup a fixed header
+4. Gradient color for backgrounds, borders and texts
+5. Variables in CSS
+6. Create shapes with *border* attribute
+
 ## Author
 
 Ashlay Moudivendar

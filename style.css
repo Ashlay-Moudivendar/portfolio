@@ -1,108 +1,157 @@
 :root {
-    --golden-color: linear-gradient(to right top, #ECC440, #FFFA8A,#DDAC17,#FFFF95);
+  --golden-color: linear-gradient(to right, #ecc440, #fffa8a, #ddac17, #ffff95);
+  --golden-color-reverse: linear-gradient(
+    to left,
+    #ecc440,
+    #fffa8a,
+    #ddac17,
+    #ffff95
+  );
+  --yellow-golden: #ffff95;
 }
 
 html {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 body {
-    background: #101D42;
-    background: linear-gradient(#101D42, #1D28A0);
-    background-attachment: fixed;
-    color: #EEF0FC;
-    margin: 0;
-    font-family: Manrope, sans-serif;
-    padding-top: 3.65rem;
+  background: #101d42;
+  background: linear-gradient(#101d42, #1d28a0);
+  background-attachment: fixed;
+  color: #eef0fc;
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  padding-top: 3.65rem;
 }
 
 em {
-    font-style: normal;
-    background-image: var(--golden-color);
-    color: transparent;
-    background-clip: text;
-    font-weight: 600;
+  font-style: normal;
+  background-image: var(--golden-color);
+  color: transparent;
+  background-clip: text;
+  font-weight: 600;
 }
 
 header {
-    background: rgba(26, 45, 164, 0.7);
-    backdrop-filter: blur(3px);
-    box-shadow: 0 2px 10px black;
-    padding: 0.5rem 1.5rem;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+  background: rgba(26, 45, 164, 0.7);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 2px 10px black;
+  padding: 0.5rem 1.5rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & div {
+    font-family: "Pacifico", sans-serif;
+    font-size: 1.5rem;
+  }
+
+  & nav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 2.5rem;
 
-    & div {
-        font-family: 'Pacifico', sans-serif;
-        font-size: 1.5rem;
+    & a {
+      text-decoration: none;
+      color: inherit;
     }
-
-    & nav {
-        display: flex;
-        gap: 2.5rem;
-
-        & a {
-            text-decoration: none;
-            color: inherit;
-        }
-    }
+  }
 }
 
-section {
-    font-family: 'Sora', sans-serif;
-    padding: 5rem 6rem;
+.section-body {
+  font-family: "Sora", sans-serif;
+  padding: 5rem 6rem;
 }
 
 .intro {
-    display: flex;
-    justify-content: space-between;
-    height: 28rem;
+  display: flex;
+  justify-content: space-between;
+  height: 28rem;
 }
 
 .content {
-    width: 60rem;
-    text-align: center;
-    align-self: center;
+  width: 60rem;
+  text-align: center;
+  align-self: center;
 
-    & p:first-child {
-        font-weight: 600;
-        font-family: Manrope;
-        font-size: 2.5rem;
-        margin-bottom: 0;
-    }
+  & p:first-child {
+    font-weight: 600;
+    font-family: Manrope;
+    font-size: 2.5rem;
+    margin-bottom: 0;
+  }
 
-    & p:nth-child(2) {
-        font-family: Manrope;
-        font-size: 1.5rem;
-        font-weight: 200;
-    }
+  & p:nth-child(2) {
+    font-family: Manrope;
+    font-size: 1.5rem;
+    font-weight: 200;
+  }
 
-    & p:last-child {
-        font-size: 1.25rem;
-        width: 80%;
-        margin: auto;
-        margin-top: 4rem;
-    }
+  & p:last-child {
+    font-size: 1.25rem;
+    width: 80%;
+    margin: auto;
+    margin-top: 4rem;
+  }
 }
 
 .square {
-    height: 7rem;
-    min-width: 7rem;
-    border-width: 5px;
-    border-style: solid;
-    border-image-source: var(--golden-color);
+  height: 7rem;
+  min-width: 7rem;
+  border-width: 5px;
+  border-style: solid;
+  border-image-source: var(--golden-color);
 }
 
-.sq-left-top {    
-    border-image-slice: 1 0 0 1 ;
+.sq-left-top {
+  border-image-slice: 1 0 0 1;
 }
 
-.sq-right-bottom {    
-    border-image-slice: 0 1 1 0;
-    align-self: flex-end;
+.sq-right-bottom {
+  border-image-slice: 0 1 1 0;
+  align-self: flex-end;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+
+  & h1 {
+    padding: 0 2rem;
+    font-family: Manrope;
+    font-weight: 700;
+    font-size: 2.25rem;
+    letter-spacing: 0.1em;
+  }
+
+  & .line {
+    height: 4px;
+    flex: 1;
+  }
+
+  & .line-left {
+    background-image: var(--golden-color);
+  }
+
+  & .line-right {
+    background-image: var(--golden-color-reverse);
+  }
+
+  & .bracket {
+    min-width: 30px;
+    height: 56px;
+    border-bottom: 4px solid var(--yellow-golden);
+    border-top: 4px solid var(--yellow-golden);
+  }
+
+  & .bracket-left {
+    border-left: 4px solid var(--yellow-golden);
+  }
+
+  & .bracket-right {
+    border-right: 4px solid var(--yellow-golden);
+  }
 }
