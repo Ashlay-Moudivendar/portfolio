@@ -226,3 +226,26 @@ section-title[text="Contact"] + div {
   color: #101d42;
   background-clip: border-box;
 }
+
+/* Contact */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #101d42;
+}
+
+
+.links {
+  display: flex;
+  gap: 0.8rem;
+  & img {
+    width: 24px;
+    height: auto;
+  }
+
+  & a {
+    display: inline-flex;
+  }
+}
