@@ -20,14 +20,6 @@ body {
   padding-top: 3.65rem;
 }
 
-em {
-  font-style: normal;
-  background-image: var(--golden-color);
-  color: transparent;
-  background-clip: text;
-  font-weight: 600;
-}
-
 header {
   background: rgba(26, 45, 164, 0.7);
   backdrop-filter: blur(3px);
@@ -69,6 +61,14 @@ header {
   width: 60rem;
   text-align: center;
   align-self: center;
+
+  & em {
+    font-style: normal;
+    background-image: var(--golden-color);
+    color: transparent;
+    background-clip: text;
+    font-weight: 600;
+  }
 
   & p:first-child {
     font-weight: 600;
@@ -156,7 +156,7 @@ header {
 }
 
 /* Skill's section */
-.skill-section {
+section-title[text="Compétences"] + div {
   display: flex;
   justify-content: space-around;
 }
@@ -196,4 +196,33 @@ header {
 .star-not-completed {
   box-sizing: border-box;
   background-color: transparent;
+}
+
+/* Contact */
+
+section-title[text="Contact"] + div {
+  font-size: 1.25rem;
+}
+
+.link-linkedin {
+  color: inherit;
+}
+
+#download-btn {
+  padding: 1rem;
+  color: transparent;
+  font-family: Manrope, sans-serif;
+  font-size: inherit;
+  font-weight: 500;
+  border: 3px solid;
+  border-image: var(--golden-color);
+  border-image-slice: 1;
+  background-image: var(--golden-color);
+  background-clip: text;
+  cursor: pointer;
+}
+
+#download-btn:hover {
+  color: #101d42;
+  background-clip: border-box;
 }
