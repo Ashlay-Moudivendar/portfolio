@@ -57,6 +57,7 @@ header {
   }
 }
 
+/* Introduction */
 
 .intro {
   display: flex;
@@ -107,6 +108,7 @@ header {
   align-self: flex-end;
 }
 
+/* General section's settings */
 .section-body {
   font-family: "Sora", sans-serif;
   padding: 5rem 6rem;
@@ -151,4 +153,47 @@ header {
   & .bracket-right {
     border-right: 4px solid var(--yellow-golden);
   }
+}
+
+/* Skill's section */
+.skill-section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 600;
+  width: fit-content;
+
+  & .rank {
+    font-size: 4rem;
+  }
+}
+
+.level {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.star {
+  width: 40px;
+  height: 20px;
+  border: 3px solid;
+  transform: skew(-20deg);
+  border-image-source: var(--golden-color);
+  border-image-slice: 1;
+}
+
+.star-completed {
+  background-image: var(--golden-color);
+}
+
+.star-not-completed {
+  box-sizing: border-box;
+  background-color: transparent;
 }

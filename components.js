@@ -13,5 +13,31 @@ class SectionTitle extends HTMLElement {
   }
 }
 
+class Skill extends HTMLElement {
+  connectedCallback() {
+    const skillName = this.getAttribute("name");
+    const rank = this.getAttribute("rank");
+    const level = Number(this.getAttribute("level")) || 0;
+    const limit = Number(this.getAttribute("limit")) || 5;
 
-customElements.define('section-title', SectionTitle)
+    const level_bar = Array.from(
+      { length: limit },
+      (_, i) =>
+        `<div class="star ${
+          i < level ? "star-completed" : "star-not-completed"
+        }"></div>`
+    );
+
+    this.innerHTML = `
+      <div class="skill">
+        <p><span class="rank">${rank}.</span> ${skillName}</p>
+        <div class="level">
+        ${level_bar.join("")}
+        </div>
+      </div>    
+    `;
+  }
+}
+
+customElements.define("section-title", SectionTitle);
+customElements.define("skill-item", Skill);
