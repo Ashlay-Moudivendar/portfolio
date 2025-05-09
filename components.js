@@ -39,5 +39,23 @@ class Skill extends HTMLElement {
   }
 }
 
+class Project extends HTMLElement {
+  connectedCallback() {
+    const description = this.getAttribute("description") || "No description";
+    const websiteLink = this.getAttribute("link") || "#";
+    const imgPath = this.getAttribute("img") || "";
+
+    this.innerHTML = `
+      <div class="project" style="background-image: url(${imgPath}), linear-gradient(#e0e1e2,#e0e1e2)">
+        <div>
+          <p>${description}</p>
+          <a href="${websiteLink}" target="_blank"><button>Voir le site</button></a>
+        </div>
+      </div>
+    `;
+  }
+}
+
 customElements.define("section-title", SectionTitle);
 customElements.define("skill-item", Skill);
+customElements.define("project-item", Project);

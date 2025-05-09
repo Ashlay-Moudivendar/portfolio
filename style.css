@@ -8,13 +8,18 @@
     #ffff95
   );
   --yellow-golden: #ffff95;
+  --white: #eef0fc;
+}
+
+a {
+  color: inherit;
 }
 
 body {
   background: #101d42;
   background: linear-gradient(#101d42, #1d28a0);
   background-attachment: fixed;
-  color: #eef0fc;
+  color: var(--white);
   margin: 0;
   font-family: Manrope, sans-serif;
   padding-top: 3.65rem;
@@ -228,6 +233,62 @@ section-title[text="Contact"] + div {
   background-clip: border-box;
 }
 
+/* Projects */
+
+section-title[text="Projets"] + .section-body {
+  display: flex;
+  justify-content: center;
+}
+
+.project {
+  width: 15rem;
+  height: 14rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  border-radius: 25px;
+  overflow: hidden;
+
+  &:hover {    
+      box-shadow: 0px 0px 2rem var(--white);
+  }
+
+  & div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    content-visibility: hidden;
+
+    &:hover {
+      content-visibility: visible;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    & p {
+      font-size: 1.25rem;
+      text-align: center;
+      margin: 0;
+    }
+
+    & button {
+      font-family: Manrope, sans-serif;
+      font-size: inherit;
+      border: 3px solid;
+      background-color: transparent;
+      color: inherit;
+      padding: 0.5rem 1.8rem;
+      border-radius: 25px;
+
+      &:hover {
+        background-color: var(--white);
+        color: black;
+      }
+    }
+  }
+}
+
 /* Contact */
 
 footer {
@@ -236,7 +297,6 @@ footer {
   padding: 1rem 2rem;
   background-color: #101d42;
 }
-
 
 .links {
   display: flex;
