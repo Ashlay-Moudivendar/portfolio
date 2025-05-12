@@ -120,6 +120,10 @@ header {
   padding: 5rem 6rem;
 }
 
+section-title:has(.section-title) {
+  scroll-margin-top: 4rem;
+}
+
 .section-title {
   display: flex;
   align-items: center;

@@ -31,6 +31,8 @@ For version control and deployment, I have used GitHub and Vercel.
 6. Create shapes with *border* attribute
 7. Web components without component-based frameworks
 8. Good practices for accessibility
+9. CSS Parent selector
+10. Use offset in case header is fixed
 
 ## Author
 
