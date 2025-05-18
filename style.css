@@ -208,35 +208,6 @@ section-title[text="Compétences"] + div {
   background-color: transparent;
 }
 
-/* Contact */
-
-section-title[text="Contact"] + div {
-  font-size: 1.25rem;
-}
-
-.link-linkedin {
-  color: inherit;
-}
-
-#download-btn {
-  padding: 1rem;
-  color: transparent;
-  font-family: Manrope, sans-serif;
-  font-size: inherit;
-  font-weight: 500;
-  border: 3px solid;
-  border-image: var(--golden-color);
-  border-image-slice: 1;
-  background-image: var(--golden-color);
-  background-clip: text;
-  cursor: pointer;
-}
-
-#download-btn:hover {
-  color: #101d42;
-  background-clip: border-box;
-}
-
 /* Projects */
 
 section-title[text="Projets"] + .section-body {
@@ -295,6 +266,100 @@ section-title[text="Projets"] + .section-body {
 
 /* Contact */
 
+section-title[text="Contact"] + div {
+  font-size: 1.25rem;
+}
+
+.link-linkedin {
+  color: inherit;
+}
+
+#download-btn {
+  padding: 1rem;
+  color: transparent;
+  font-family: Manrope, sans-serif;
+  font-size: inherit;
+  font-weight: 500;
+  border: 3px solid;
+  border-image: var(--golden-color);
+  border-image-slice: 1;
+  background-image: var(--golden-color);
+  background-clip: text;
+  cursor: pointer;
+}
+
+#download-btn:hover {
+  color: #101d42;
+  background-clip: border-box;
+}
+
+/* Citations*/
+
+.quote-section {
+  background-color: var(--white);
+  color: #101d42;
+  padding: 2rem 0;
+}
+
+.quote-title {
+  text-align: center;
+  font-family: 'Caveat', sans-serif;
+  font-weight: 700;
+
+  & h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+}
+
+.carousel {
+  margin-top: 3rem;
+  overflow: hidden;
+}
+
+.quote-nav {
+  text-align: center;
+
+  & button {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 3px solid #232ED1;
+    transition: background-color 0.5s ease;
+  }
+
+  & button:first-child {
+    background-color: #232ED1;
+  }
+}
+
+
+.quote {
+  font-style: italic;
+  font-family: Inter, sans-serif;
+  font-size: 1.25rem;
+  padding: 0 4rem;
+  flex: 0 1 100%;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+
+  & p:first-child {
+    font-weight: 600;
+  }
+}
+
+.quote-wrapper {
+  display: flex;
+  width: 200%;
+  transition: transform 0.5s ease;
+}
+
+
+/* Footer */
 footer {
   display: flex;
   justify-content: space-between;
