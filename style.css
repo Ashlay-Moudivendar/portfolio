@@ -117,7 +117,7 @@ header {
 /* General section's settings */
 .section-body {
   font-family: "Sora", sans-serif;
-  padding: 5rem 6rem;
+  padding: 4rem 6rem 7rem;
 }
 
 section-title:has(.section-title) {
@@ -188,7 +188,7 @@ section-title:has(.section-title) {
       left: 1rem;
     }
 
-    &:first-child::after {      
+    &:first-child::after {
       background-image: url("./assets/Cap.svg");
       height: 2rem;
       vertical-align: top;
@@ -331,8 +331,11 @@ section-title[text="Compétences"] + div {
   font-weight: 600;
   width: fit-content;
 
-  & .rank {
-    font-size: 4rem;
+  & > p {
+    margin-top: 0;
+    & .rank {
+      font-size: 4rem;
+    }
   }
 }
 
