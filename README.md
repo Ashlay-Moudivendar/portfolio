@@ -36,6 +36,9 @@ For version control and deployment, I have used GitHub and Vercel.
 11. Carousel
 12. *SetInterval* function
 13. Web components with child inside
+14. CSS Grid
+15. Vertical timeline in CSS
+16. Pseudo-element (*::after*, *::before*)
 
 ## Author
 
