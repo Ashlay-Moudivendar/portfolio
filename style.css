@@ -17,6 +17,7 @@ html {
 
 *::selection {
   background-color: blueviolet;
+  color: var(--white);
 }
 
 a {
