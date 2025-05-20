@@ -11,6 +11,10 @@
   --white: #eef0fc;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a {
   color: inherit;
 }
@@ -516,6 +520,7 @@ section-title[text="Contact"] + div {
 footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 2rem;
   background-color: #101d42;
 }
