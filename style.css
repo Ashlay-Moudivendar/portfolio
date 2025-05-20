@@ -15,6 +15,10 @@ html {
   scroll-behavior: smooth;
 }
 
+*::selection {
+  background-color: blueviolet;
+}
+
 a {
   color: inherit;
 }
@@ -382,9 +386,10 @@ section-title[text="Projets"] + .section-body {
   background-position-y: center;
   border-radius: 25px;
   overflow: hidden;
+  transition: box-shadow 0.4s ease-in-out;
 
   &:hover {
-    box-shadow: 0px 0px 2rem var(--white);
+    box-shadow: 0px 0px 1rem 10px var(--white);
   }
 
   & div {
@@ -393,11 +398,12 @@ section-title[text="Projets"] + .section-body {
     justify-content: space-around;
     align-items: center;
     height: 100%;
-    content-visibility: hidden;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: opacity 0.5s ease-in-out;
 
     &:hover {
-      content-visibility: visible;
-      background-color: rgba(0, 0, 0, 0.9);
+      opacity: 1;
     }
 
     & p {
@@ -407,13 +413,17 @@ section-title[text="Projets"] + .section-body {
     }
 
     & button {
+      cursor: pointer;
       font-family: Manrope, sans-serif;
       font-size: inherit;
-      border: 3px solid;
+      border: 3px solid var(--white);
       background-color: transparent;
       color: inherit;
       padding: 0.5rem 1.8rem;
       border-radius: 25px;
+      transition-property: color, background-color;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
 
       &:hover {
         background-color: var(--white);
@@ -445,6 +455,7 @@ section-title[text="Contact"] + div {
   background-image: var(--golden-color);
   background-clip: text;
   cursor: pointer;
+  transition: color 0.3s ease-out;
 }
 
 #download-btn:hover {
