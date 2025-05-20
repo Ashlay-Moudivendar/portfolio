@@ -295,6 +295,7 @@ section-title:has(.section-title) {
     border-radius: 10px;
     width: fit-content;
     margin: 1.25rem 0 0 0.625rem;
+    opacity: 0;
   }
 }
 

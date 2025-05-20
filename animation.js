@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Quotes' section / Carousel
   const wrapper = document.querySelector(".quote-wrapper");
   const buttons = document.querySelectorAll(".quote-nav button");
 
@@ -33,4 +34,34 @@ document.addEventListener("DOMContentLoaded", () => {
     updateSlide(0);
     startAutoSlide();
   });
+
+  // Career path: displaying description when scrolling
+  const descriptionObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.animate(
+            [
+              { transform: "translateX(-0.625rem)", opacity: 0 },
+              { transform: "translateX(0)", opacity: 1 },
+            ],
+            {
+              duration: 400,
+              fill: "forwards",
+            }
+          );
+          descriptionObserver.unobserve(entry.target);
+        }
+      }
+    },
+    {
+      root: null,
+      rootMargin: "0% 0% -35%",
+    }
+  );
+
+  const descriptionElements = document.querySelectorAll(".content-step");
+  for (const description of descriptionElements) {
+    descriptionObserver.observe(description);
+  }
 });
