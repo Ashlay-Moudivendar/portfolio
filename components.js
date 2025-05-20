@@ -56,6 +56,34 @@ class Project extends HTMLElement {
   }
 }
 
+class StepCareerPath extends HTMLElement {
+  connectedCallback() {
+    setTimeout(() => {
+      const title = this.getAttribute("title") || "No title";
+      const location = this.getAttribute("location") || "No location";
+      const date = this.getAttribute("date") || "No date";
+      const order = this.getAttribute("order") || "auto";
+      let content = Array.from(this.childNodes);
+
+      const contentContainer = document.createElement("p");
+      content.forEach((element) => {
+        contentContainer.appendChild(element);
+      });
+
+      contentContainer.classList.add("content-step");
+      this.style.gridRow = order;
+
+      this.innerHTML = `<div class="step-path">
+              <p class="title-step">${title}</p>
+              <p class="location-step">${location}</p>
+              <p class="date-step">${date}</p>
+              ${contentContainer.outerHTML}
+      </div>`;
+    }, 0);
+  }
+}
+
 customElements.define("section-title", SectionTitle);
 customElements.define("skill-item", Skill);
 customElements.define("project-item", Project);
+customElements.define("step-item", StepCareerPath);

@@ -35,6 +35,7 @@ For version control and deployment, I have used GitHub and Vercel.
 10. Use offset in case header is fixed
 11. Carousel
 12. *SetInterval* function
+13. Web components with child inside
 
 ## Author
 

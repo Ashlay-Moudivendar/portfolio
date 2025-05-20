@@ -165,6 +165,158 @@ section-title:has(.section-title) {
   }
 }
 
+/* Career path */
+
+& .path-title {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.75rem;
+
+  & p {
+    flex: 1;
+    text-align: center;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 2.8rem;
+      height: 2.8rem;
+      position: relative;
+      left: 1rem;
+    }
+
+    &:first-child::after {      
+      background-image: url("./assets/Cap.svg");
+      height: 2rem;
+      vertical-align: top;
+    }
+
+    &:last-child::after {
+      background-image: url("./assets/Suitcase\ work.svg");
+      height: 2.6rem;
+      vertical-align: bottom;
+    }
+  }
+}
+
+.path {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-rows: repeat(5, auto);
+  row-gap: 3rem;
+}
+
+.timeline {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  position: relative;
+  top: 0.625rem;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0.625rem;
+    top: 0;
+    bottom: 0.625rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #00d1b2;
+  }
+}
+
+.timeline-point {
+  grid-column: 2;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 2.25rem;
+    height: 2.25rem;
+    background-color: #00d1b2;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+  }
+}
+
+.timeline-end {
+  position: relative;
+  grid-column: 2;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 15rem;
+    height: 0.625rem;
+    background-color: #00d1b2;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 100%);
+  }
+}
+
+.step-path {
+  & p {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  & .title-step {
+    font-family: Manrope, sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  & .location-step {
+    font-family: Inter, sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+
+  & .content-step {
+    font-size: 1.2rem;
+    font-weight: 300;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 1.25rem;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 1.25rem 0 0 0.625rem;
+  }
+}
+
+.step-path:last-child {
+  padding-bottom: 6rem;
+}
+
+.training-item {
+  grid-column: 1;
+}
+
+.job-item {
+  grid-column: 3;
+}
+
+.actual-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+
+  & p {
+    font: 1.5rem Manrope, sans-serif;
+    margin: 1rem 0;
+
+    &:first-child {
+      font-weight: 700;
+    }
+  }
+}
+
 /* Skill's section */
 section-title[text="Compétences"] + div {
   display: flex;
@@ -224,8 +376,8 @@ section-title[text="Projets"] + .section-body {
   border-radius: 25px;
   overflow: hidden;
 
-  &:hover {    
-      box-shadow: 0px 0px 2rem var(--white);
+  &:hover {
+    box-shadow: 0px 0px 2rem var(--white);
   }
 
   & div {
@@ -303,7 +455,7 @@ section-title[text="Contact"] + div {
 
 .quote-title {
   text-align: center;
-  font-family: 'Caveat', sans-serif;
+  font-family: "Caveat", sans-serif;
   font-weight: 700;
 
   & h1 {
@@ -327,15 +479,14 @@ section-title[text="Contact"] + div {
     padding: 0;
     border-radius: 50%;
     background-color: transparent;
-    border: 3px solid #232ED1;
+    border: 3px solid #232ed1;
     transition: background-color 0.5s ease;
   }
 
   & button:first-child {
-    background-color: #232ED1;
+    background-color: #232ed1;
   }
 }
-
 
 .quote {
   font-style: italic;
@@ -358,7 +509,6 @@ section-title[text="Contact"] + div {
   transition: transform 0.5s ease;
 }
 
-
 /* Footer */
 footer {
   display: flex;
@@ -371,7 +521,7 @@ footer {
   display: flex;
   gap: 0.8rem;
   & img {
-    width: 24px;
+    width: 1.5rem;
     height: auto;
   }
 
