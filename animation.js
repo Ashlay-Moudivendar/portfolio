@@ -64,4 +64,33 @@ document.addEventListener("DOMContentLoaded", () => {
   for (const description of descriptionElements) {
     descriptionObserver.observe(description);
   }
+
+  // "Opening" animation in introduction
+  setTimeout(() => {
+    const squareEdges = document.querySelectorAll(".square");
+    const introContent = document.querySelector(".content");
+
+    for (const square of squareEdges) {
+      square.classList.add("active");
+    }
+
+    function handleTransition(event) {
+      if (event.propertyName === "transform") {
+        introContent.classList.add("active");
+        squareEdges[0].removeEventListener("transitionend", handleTransition);
+      }
+    }
+
+    squareEdges[0].addEventListener("transitionend", handleTransition);
+
+    introContent.addEventListener(
+      "transitionend",
+      () => {
+        document
+          .querySelectorAll("section:not(.intro)")
+          .forEach((section) => section.classList.add("active"));
+      },
+      { once: true }
+    );
+  }, 500);
 });

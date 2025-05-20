@@ -40,6 +40,7 @@ For version control and deployment, I have used GitHub and Vercel.
 15. Vertical timeline in CSS
 16. Pseudo-element (*::after*, *::before*)
 17. IntersectionObserver API (displaying elements when scrolling)
+18. Chaining transitions one after the other (*transitionend* event)
 
 ## Author
 

@@ -76,6 +76,12 @@ header {
   width: 60rem;
   text-align: center;
   align-self: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  &.active {
+    opacity: 1;
+  }
 
   & em {
     font-style: normal;
@@ -89,7 +95,7 @@ header {
     font-weight: 600;
     font-family: Manrope;
     font-size: 2.5rem;
-    margin-bottom: 0;
+    margin: 0;
   }
 
   & p:nth-child(2) {
@@ -112,18 +118,48 @@ header {
   border-width: 5px;
   border-style: solid;
   border-image-source: var(--golden-color);
+  transition: all 0.6s ease-in-out;
 }
 
 .sq-left-top {
   border-image-slice: 1 0 0 1;
+  transform: translate(-50%, -50%);
+  position: relative;
+  left: 50%;
+  top: 50%;
+
+  &.active {
+    transform: translate(0%, 0%);
+    left: 0;
+    top: 0;
+  }
 }
 
 .sq-right-bottom {
   border-image-slice: 0 1 1 0;
   align-self: flex-end;
+  transform: translate(50%, 46%);
+  position: relative;
+  right: 50%;
+  bottom: 50%;
+
+  &.active {
+    transform: translate(0%, 0%);
+    right: 0;
+    bottom: 0;
+  }
 }
 
 /* General section's settings */
+section:not(.intro) {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
 .section-body {
   font-family: "Sora", sans-serif;
   padding: 4rem 6rem 7rem;
