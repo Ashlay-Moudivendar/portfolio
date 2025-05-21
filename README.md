@@ -48,6 +48,8 @@ As for version control and deployment, I have used GitHub and Vercel.
 16. Pseudo-element (*::after*, *::before*)
 17. IntersectionObserver API (displaying elements when scrolling)
 18. Chaining transitions one after the other (*transitionend* event)
+19. Responsive design with media queries
+20. "Mobile-first" approach
 
 ## Author
 

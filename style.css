@@ -367,9 +367,26 @@ section-title:has(.section-title) {
 }
 
 /* Skill's section */
-section-title[text="Compétences"] + div {
+section-title[text="Compétences"] + .section-body {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4rem;
+}
+
+@media screen and (min-width: 992px) {
+  section-title[text="Compétences"] + .section-body {
+    flex-direction: row;
+    padding: 4rem 4rem 7rem;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  section-title[text="Compétences"] + .section-body {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }
 
 .skill {
