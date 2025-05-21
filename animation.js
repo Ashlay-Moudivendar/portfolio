@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     const squareEdges = document.querySelectorAll(".square");
     const introContent = document.querySelector(".content");
+    const smartphoneQuery = window.matchMedia("(max-width: 767.97px)");
 
     for (const square of squareEdges) {
       square.classList.add("active");
@@ -80,6 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (event.propertyName === "transform") {
         introContent.classList.add("active");
         squareEdges[0].removeEventListener("transitionend", handleTransition);
+        if (smartphoneQuery.matches) {
+          squareEdges.forEach((square) => (square.style.display = "none"));
+        }
       }
     }
 

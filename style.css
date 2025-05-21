@@ -96,29 +96,16 @@ header {
   }
 }
 
-@media screen and (min-width: 768px) {
-  header {
-    & .menu-icon {
-      display: none;
-    }
-    & nav {
-      display: flex;
-      gap: 2.5rem;
-      justify-self: end;
-    }
-  }
-}
-
 /* Introduction */
 
-.intro {
+#intro {
   display: flex;
-  justify-content: space-between;
-  height: 28rem;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .content {
-  width: 60rem;
   text-align: center;
   align-self: center;
   opacity: 0;
@@ -151,30 +138,31 @@ header {
 
   & p:last-child {
     font-size: 1.25rem;
-    width: 80%;
+    width: 90%;
     margin: auto;
     margin-top: 4rem;
   }
 }
 
 .square {
-  height: 7rem;
-  min-width: 7rem;
+  height: 3rem;
+  min-width: 3rem;
+  max-width: 3rem;
   border-width: 5px;
   border-style: solid;
   border-image-source: var(--golden-color);
   transition: all 0.6s ease-in-out;
+  position: absolute;
 }
 
 .sq-left-top {
   border-image-slice: 1 0 0 1;
   transform: translate(-50%, -50%);
-  position: relative;
   left: 50%;
   top: 50%;
 
   &.active {
-    transform: translate(0%, 0%);
+    transform: translate(-100%);
     left: 0;
     top: 0;
   }
@@ -183,20 +171,19 @@ header {
 .sq-right-bottom {
   border-image-slice: 0 1 1 0;
   align-self: flex-end;
-  transform: translate(50%, 46%);
-  position: relative;
+  transform: translate(49%, 41.5%);
   right: 50%;
   bottom: 50%;
 
   &.active {
-    transform: translate(0%, 0%);
+    transform: translate(100%);
     right: 0;
     bottom: 0;
   }
 }
 
 /* General section's settings */
-section:not(.intro) {
+section:not(#intro) {
   opacity: 0;
   transition: opacity 0.5s ease-in;
 
@@ -418,21 +405,6 @@ section-title[text="Compétences"] + .section-body {
   row-gap: 4rem;
 }
 
-@media screen and (min-width: 992px) {
-  section-title[text="Compétences"] + .section-body {
-    flex-direction: row;
-    padding: 4rem 4rem 7rem;
-    justify-content: space-between;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  section-title[text="Compétences"] + .section-body {
-    flex-direction: row;
-    justify-content: space-around;
-  }
-}
-
 .skill {
   display: flex;
   flex-direction: column;
@@ -648,5 +620,75 @@ footer {
 
   & a {
     display: inline-flex;
+  }
+}
+
+/* Responsive Design */
+
+@media screen and (min-width: 768px) {
+  header {
+    & .menu-icon {
+      display: none;
+    }
+    & nav {
+      display: flex;
+      gap: 2.5rem;
+      justify-self: end;
+    }
+  }
+
+  #intro {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 28rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .square {
+    position: relative;
+    height: 3.5rem;
+    min-width: 3.5rem;
+
+    &.active {
+      transform: translate(0%, 0%);
+    }
+  }
+
+  .sq-right-bottom {
+    transform: translate(49%, 42.5%);
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #intro {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .square {
+    height: 7rem;
+    min-width: 7rem;
+  }
+
+  .sq-right-bottom {
+    transform: translate(50%, 46%);
+  }
+
+  section-title[text="Compétences"] + .section-body {
+    flex-direction: row;
+    padding: 4rem 4rem 7rem;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #intro .content p:last-child {
+    width: 80%;
+  }
+
+  section-title[text="Compétences"] + .section-body {
+    flex-direction: row;
+    justify-content: space-around;
   }
 }
