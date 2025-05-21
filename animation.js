@@ -60,10 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  const descriptionElements = document.querySelectorAll(".content-step");
-  for (const description of descriptionElements) {
-    descriptionObserver.observe(description);
-  }
+  setTimeout(() => {
+    const descriptionElements = document.querySelectorAll(".content-step");
+    for (const description of descriptionElements) {
+      descriptionObserver.observe(description);
+    }
+  }, 1700);
 
   // "Opening" animation in introduction
   setTimeout(() => {
