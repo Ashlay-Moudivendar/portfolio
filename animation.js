@@ -96,3 +96,29 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }, 500);
 });
+
+// Opening navigation/menu for small screen
+const openMenu = () => {
+  const menu = document.querySelector("nav");
+  if (menu.className.includes("nav-active")) {
+    removeOverlay();
+  } else {
+    menu.classList.add("nav-active");
+    const heightMenu = document.querySelector("header").offsetHeight;
+    const overlay = document.querySelector(".overlay");
+    overlay.style.top = heightMenu + "px";
+    document.querySelector(".overlay").style.display = "block";
+    addOverlayListeners();
+  }
+};
+
+const removeOverlay = () => {
+  document.querySelector(".overlay").style.display = "none";
+  document.querySelector("nav").classList.remove("nav-active");
+};
+
+const addOverlayListeners = () => {
+  document
+    .querySelectorAll("nav a, .overlay")
+    .forEach((listener) => listener.addEventListener("click", removeOverlay));
+};
