@@ -16,10 +16,17 @@ Prototype in Figma: [https://www.figma.com/proto/1LtbjIRtHfcXcivCoiDtk6/Portfoli
 
 ## Technologies
 
-I have opted for Vanilla JS, along with HTML and CSS. This version is lightweight and does not require interactivity, so there is no need to use React (it would be overkill).
+I have opted for Vanilla JS, along with HTML and CSS. This version is lightweight and does not require so much interactivity, so there is no need to use React (it would be overkill).
 Additionally, for now, there is no API or database involved.
 
-For version control and deployment, I have used GitHub and Vercel.
+About development tools:
+
+- VSCode
+- Local server with Python
+- [Responsively App](https://responsively.app/)
+- [Ngrok](https://ngrok.com/)
+
+As for version control and deployment, I have used GitHub and Vercel.
 
 ## What I learned ?
 
