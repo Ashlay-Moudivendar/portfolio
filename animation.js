@@ -123,6 +123,7 @@ const removeOverlay = () => {
 
 const addOverlayListeners = () => {
   document
-    .querySelectorAll("nav a, .overlay")
+    .querySelectorAll("nav a")
     .forEach((listener) => listener.addEventListener("click", removeOverlay));
+  document.querySelector(".overlay").addEventListener("touchstart", removeOverlay)
 };
