@@ -524,7 +524,7 @@ section-title[text="Contact"] + div {
 
   & h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
@@ -556,7 +556,7 @@ section-title[text="Contact"] + div {
   font-style: italic;
   font-family: Inter, sans-serif;
   font-size: 1.25rem;
-  padding: 0 4rem;
+  padding: 0 1.5rem;
   flex: 0 1 100%;
   font-weight: 300;
   display: flex;
@@ -640,6 +640,14 @@ footer {
 
   .sq-right-bottom {
     transform: translate(49%, 42.5%);
+  }
+
+  .quote-title h1 {
+    font-size: 2.5rem;
+  }
+
+  .quote {
+    padding: 0 4rem;
   }
 
   footer {
