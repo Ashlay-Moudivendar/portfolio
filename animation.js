@@ -92,13 +92,34 @@ document.addEventListener("DOMContentLoaded", () => {
     introContent.addEventListener(
       "transitionend",
       () => {
-        document
-          .querySelectorAll("section:not(.intro)")
-          .forEach((section) => section.classList.add("active"));
+        document.querySelectorAll("section:not(.intro)").forEach((section) => section.classList.add("active"));
       },
       { once: true }
     );
   }, 500);
+
+  // Show project's detail
+  const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+  if (isTouchDevice) {
+    document.querySelectorAll(".project").forEach((project, index) => {
+      const hideProjectDetail = (event) => {
+        if (!project.contains(event.target)) {
+          project.classList.remove("project-active");
+          project.querySelector("div").classList.remove("project-active");
+          document.removeEventListener("touchstart", hideProjectDetail);
+        }
+      };
+
+      project.addEventListener("click", () => {
+        if (!project.classList.contains("project-active")) {
+          project.classList.add("project-active");
+          project.querySelector("div").classList.add("project-active");
+          document.addEventListener("touchstart", hideProjectDetail);
+        }
+      });
+    });
+  }
 });
 
 // Opening navigation/menu for small screen
@@ -122,8 +143,6 @@ const removeOverlay = () => {
 };
 
 const addOverlayListeners = () => {
-  document
-    .querySelectorAll("nav a")
-    .forEach((listener) => listener.addEventListener("click", removeOverlay));
-  document.querySelector(".overlay").addEventListener("touchstart", removeOverlay)
+  document.querySelectorAll("nav a").forEach((listener) => listener.addEventListener("click", removeOverlay));
+  document.querySelector(".overlay").addEventListener("touchstart", removeOverlay);
 };

@@ -1,12 +1,6 @@
 :root {
   --golden-color: linear-gradient(to right, #ecc440, #fffa8a, #ddac17, #ffff95);
-  --golden-color-reverse: linear-gradient(
-    to left,
-    #ecc440,
-    #fffa8a,
-    #ddac17,
-    #ffff95
-  );
+  --golden-color-reverse: linear-gradient(to left, #ecc440, #fffa8a, #ddac17, #ffff95);
   --semi-gold: linear-gradient(to right, #ecc440, #fffa8a);
   --yellow-golden: #ffff95;
   --white: #eef0fc;
@@ -431,7 +425,7 @@ section-title[text="Projets"] + .section-body {
   overflow: hidden;
   transition: box-shadow 0.4s ease-in-out;
 
-  &:hover {
+  &.project-active {
     box-shadow: 0px 0px 1rem 10px var(--white);
   }
 
@@ -442,10 +436,12 @@ section-title[text="Projets"] + .section-body {
     align-items: center;
     height: 100%;
     opacity: 0;
+    pointer-events: none;
     background-color: rgba(0, 0, 0, 0.9);
     transition: opacity 0.5s ease-in-out;
 
-    &:hover {
+    &.project-active {
+      pointer-events: auto;
       opacity: 1;
     }
 
@@ -468,7 +464,7 @@ section-title[text="Projets"] + .section-body {
       transition-duration: 0.3s;
       transition-timing-function: ease-in-out;
 
-      &:hover {
+      &:active {
         background-color: var(--white);
         color: black;
       }
@@ -505,7 +501,7 @@ section-title[text="Contact"] + div {
   transition: color 0.3s ease-out;
 }
 
-#download-btn:hover {
+#download-btn:active {
   color: #101d42;
   background-clip: border-box;
 }
@@ -773,5 +769,29 @@ footer {
   section-title[text="Compétences"] + .section-body {
     flex-direction: row;
     justify-content: space-around;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #download-btn:hover {
+    color: #101d42;
+    background-clip: border-box;
+  }
+
+  .project {
+    &:hover {
+      box-shadow: 0px 0px 1rem 10px var(--white);
+    }
+
+    & div {
+      pointer-events: auto;
+      & button:hover {
+        background-color: var(--white);
+        color: black;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }
