@@ -478,7 +478,11 @@ section-title[text="Projets"] + .section-body {
 /* Contact */
 
 section-title[text="Contact"] + div {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
+
+  & ul {
+    padding-left: 1.5rem;
+  }
 }
 
 .link-linkedin {
@@ -593,6 +597,16 @@ footer {
 }
 
 /* Responsive Design */
+
+@media screen and (min-width: 600px) {
+  section-title[text="Contact"] + div {
+    font-size: 1.25rem;
+
+    & ul {
+      padding-left: revert;
+    }
+  }
+}
 
 @media screen and (min-width: 768px) {
   header {
