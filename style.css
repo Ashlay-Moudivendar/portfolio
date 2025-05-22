@@ -194,7 +194,7 @@ section:not(#intro) {
 
 .section-body {
   font-family: "Sora", sans-serif;
-  padding: 4rem 6rem 7rem;
+  padding: 4rem 1rem 7rem;
 }
 
 section-title:has(.section-title) {
@@ -244,51 +244,25 @@ section-title:has(.section-title) {
 
 /* Career path */
 
-& .path-title {
-  display: flex;
-  justify-content: space-around;
-  font-size: 1.75rem;
-
-  & p {
-    flex: 1;
-    text-align: center;
-    position: relative;
-
-    &::after {
-      content: "";
-      display: inline-block;
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 2.8rem;
-      height: 2.8rem;
-      position: relative;
-      left: 1rem;
-    }
-
-    &:first-child::after {
-      background-image: url("./assets/Cap.svg");
-      height: 2rem;
-      vertical-align: top;
-    }
-
-    &:last-child::after {
-      background-image: url("./assets/Suitcase\ work.svg");
-      height: 2.6rem;
-      vertical-align: bottom;
-    }
-  }
+.path-title {
+  display: none;
 }
 
 .path {
   margin-top: 3rem;
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: 1fr 5fr;
   grid-template-rows: repeat(5, auto);
   row-gap: 3rem;
 }
 
+.timeline,
+.timeline-end,
+.timeline-point {
+  grid-column: 1;
+}
+
 .timeline {
-  grid-column: 2;
   grid-row: 1 / -1;
   position: relative;
   top: 0.625rem;
@@ -306,7 +280,6 @@ section-title:has(.section-title) {
 }
 
 .timeline-point {
-  grid-column: 2;
   position: relative;
 
   &::after {
@@ -323,17 +296,15 @@ section-title:has(.section-title) {
 
 .timeline-end {
   position: relative;
-  grid-column: 2;
 
   &::after {
     content: "";
     position: absolute;
-    width: 15rem;
+    width: 7.5rem;
     height: 0.625rem;
     background-color: var(--timeline-color);
     left: 50%;
     bottom: 0;
-    transform: translate(-50%, 100%);
   }
 }
 
@@ -362,7 +333,7 @@ section-title:has(.section-title) {
     padding: 1.25rem;
     border-radius: 10px;
     width: fit-content;
-    margin: 1.25rem 0 0 0.625rem;
+    margin-top: 1.25rem;
     opacity: 0;
   }
 }
@@ -371,12 +342,8 @@ section-title:has(.section-title) {
   padding-bottom: 6rem;
 }
 
-.training-item {
-  grid-column: 1;
-}
-
-.job-item {
-  grid-column: 3;
+step-item {
+  grid-column: 2;
 }
 
 .actual-position {
@@ -384,15 +351,16 @@ section-title:has(.section-title) {
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
+  font: 1.2rem Manrope, sans-serif;
 
   & p {
-    font: 1.3rem Manrope, sans-serif;
     margin: 0.7rem 0;
 
     &:first-child {
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 1rem;
+      text-align: center;
     }
   }
 }
@@ -681,6 +649,84 @@ footer {
     transform: translate(50%, 46%);
   }
 
+  .section-body {
+    padding: 4rem 6rem 7rem;
+  }
+
+  #parcours + .section-body {
+    padding: 4rem 4rem 7rem;
+  }
+
+  .path-title {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.75rem;
+
+    & p {
+      flex: 1;
+      text-align: center;
+      position: relative;
+
+      &::after {
+        content: "";
+        display: inline-block;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 2.8rem;
+        height: 2.8rem;
+        position: relative;
+        left: 1rem;
+      }
+
+      &:first-child::after {
+        background-image: url("./assets/Cap.svg");
+        height: 2rem;
+        vertical-align: top;
+      }
+
+      &:last-child::after {
+        background-image: url("./assets/Suitcase\ work.svg");
+        height: 2.6rem;
+        vertical-align: bottom;
+      }
+    }
+  }
+
+  .path {
+    grid-template-columns: 2fr 1fr 2fr;
+  }
+
+  .timeline,
+  .timeline-end,
+  .timeline-point {
+    grid-column: 2;
+  }
+
+  .timeline-end::after {
+    width: 15rem;
+    transform: translate(-50%, 50%);
+  }
+
+  .step-path .content-step {
+    margin-left: 0.625rem;
+  }
+
+  .training-item {
+    grid-column: 1;
+  }
+
+  .job-item {
+    grid-column: 3;
+  }
+
+  .actual-position {
+    font-size: 1.3rem;
+
+    & p:first-child {
+      font-size: 1.5rem;
+    }
+  }
+
   section-title[text="Compétences"] + .section-body {
     flex-direction: row;
     padding: 4rem 4rem 7rem;
@@ -691,6 +737,10 @@ footer {
 @media screen and (min-width: 1200px) {
   #intro .content p:last-child {
     width: 80%;
+  }
+
+  #parcours + .section-body {
+    padding: 4rem 6rem 7rem;
   }
 
   section-title[text="Compétences"] + .section-body {
