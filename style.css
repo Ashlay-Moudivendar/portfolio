@@ -7,6 +7,7 @@
     #ddac17,
     #ffff95
   );
+  --semi-gold: linear-gradient(to right, #ecc440, #fffa8a);
   --yellow-golden: #ffff95;
   --white: #eef0fc;
   --timeline-color: orange;
@@ -377,14 +378,14 @@ section-title[text="Compétences"] + .section-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 600;
   width: fit-content;
 
   & > p {
     margin-top: 0;
     & .rank {
-      font-size: 4rem;
+      font-size: 3rem;
     }
   }
 }
@@ -396,16 +397,16 @@ section-title[text="Compétences"] + .section-body {
 }
 
 .star {
-  width: 40px;
-  height: 20px;
+  width: 2rem;
+  height: 1rem;
   border: 3px solid;
   transform: skew(-20deg);
-  border-image-source: var(--golden-color);
+  border-image-source: var(--semi-gold);
   border-image-slice: 1;
 }
 
 .star-completed {
-  background-image: var(--golden-color);
+  background-image: var(--semi-gold);
 }
 
 .star-not-completed {
