@@ -146,3 +146,13 @@ const addOverlayListeners = () => {
   document.querySelectorAll("nav a").forEach((listener) => listener.addEventListener("click", removeOverlay));
   document.querySelector(".overlay").addEventListener("touchstart", removeOverlay);
 };
+
+// Click logo : scroll to top
+
+const scrollToTop = () => {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+};
