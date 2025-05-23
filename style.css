@@ -61,7 +61,7 @@ header {
 
   & > a:first-child {
     font-family: "Pacifico", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     width: fit-content;
   }
 
@@ -91,6 +91,11 @@ header {
       border-top: 3px solid;
     }
   }
+}
+
+main,
+footer {
+  font-size: 1rem;
 }
 
 /* Introduction */
@@ -123,18 +128,18 @@ header {
   & p:first-child {
     font-weight: 600;
     font-family: Manrope;
-    font-size: 2.5rem;
+    font-size: 2.5em;
     margin: 0;
   }
 
   & p:nth-child(2) {
     font-family: Manrope;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: 200;
   }
 
   & p:last-child {
-    font-size: 1.25rem;
+    font-size: 1.25em;
     width: 90%;
     margin: auto;
     margin-top: 4rem;
@@ -206,7 +211,7 @@ section-title:has(.section-title) {
     padding: 0;
     font-family: Manrope;
     font-weight: 700;
-    font-size: 2.25rem;
+    font-size: 2.25em;
     letter-spacing: 0.1em;
   }
 
@@ -250,7 +255,7 @@ section-title:has(.section-title) {
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-template-rows: repeat(5, auto);
-  row-gap: 3rem;
+  row-gap: 9em;
 }
 
 .timeline,
@@ -267,7 +272,7 @@ section-title:has(.section-title) {
   &::after {
     content: "";
     position: absolute;
-    width: 0.625rem;
+    width: 0.625em;
     top: 0;
     bottom: 0.625rem;
     left: 50%;
@@ -282,8 +287,8 @@ section-title:has(.section-title) {
   &::after {
     content: "";
     position: absolute;
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.25em;
+    height: 2.25em;
     background-color: var(--timeline-color);
     left: 50%;
     transform: translateX(-50%);
@@ -298,7 +303,7 @@ section-title:has(.section-title) {
     content: "";
     position: absolute;
     width: 7.5rem;
-    height: 0.625rem;
+    height: 0.625em;
     background-color: var(--timeline-color);
     left: 50%;
     bottom: 0;
@@ -314,7 +319,7 @@ section-title:has(.section-title) {
   & .title-step {
     font-family: Manrope, sans-serif;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.5em;
   }
 
   & .location-step {
@@ -324,7 +329,7 @@ section-title:has(.section-title) {
   }
 
   & .content-step {
-    font-size: 1.2rem;
+    font-size: 1.2em;
     font-weight: 300;
     background-color: rgba(0, 0, 0, 0.4);
     padding: 1.25rem;
@@ -335,8 +340,8 @@ section-title:has(.section-title) {
   }
 }
 
-.step-path:last-child {
-  padding-bottom: 6rem;
+step-item:last-of-type {
+  padding-bottom: 8em;
 }
 
 step-item {
@@ -348,14 +353,14 @@ step-item {
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
-  font: 1.2rem Manrope, sans-serif;
+  font: 1.5em Manrope, sans-serif;
 
   & p {
     margin: 0.7rem 0;
 
     &:first-child {
       font-weight: 700;
-      font-size: 1.4rem;
+      font-size: 1.15em;
       margin-bottom: 1rem;
       text-align: center;
     }
@@ -374,14 +379,14 @@ section-title[text="Compétences"] + .section-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.7rem;
+  font-size: 1.7em;
   font-weight: 600;
   width: fit-content;
 
   & > p {
     margin-top: 0;
     & .rank {
-      font-size: 3rem;
+      font-size: 2em;
     }
   }
 }
@@ -418,8 +423,8 @@ section-title[text="Projets"] + .section-body {
 }
 
 .project {
-  width: 15rem;
-  height: 14rem;
+  width: 15em;
+  height: 14em;
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: center;
@@ -448,7 +453,7 @@ section-title[text="Projets"] + .section-body {
     }
 
     & p {
-      font-size: 1.25rem;
+      font-size: 1.25em;
       text-align: center;
       margin: 0;
     }
@@ -477,7 +482,7 @@ section-title[text="Projets"] + .section-body {
 /* Contact */
 
 section-title[text="Contact"] + div {
-  font-size: 1.1rem;
+  font-size: 1.1em;
 
   & ul {
     padding-left: 1.5rem;
@@ -523,7 +528,7 @@ section-title[text="Contact"] + div {
 
   & h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 2em;
   }
 }
 
@@ -554,7 +559,7 @@ section-title[text="Contact"] + div {
 .quote {
   font-style: italic;
   font-family: Inter, sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.25em;
   padding: 0 1.5rem;
   flex: 0 1 100%;
   font-weight: 300;
@@ -597,9 +602,38 @@ footer {
 
 /* Responsive Design */
 
+@media screen and (max-width: 599px) {
+  main,
+  footer {
+    font-size: 0.8rem;
+  }
+
+  #intro .content {
+    font-size: 0.8rem;
+  }
+
+  .section-title {
+    & h1 {
+      font-size: 1.8em;
+    }
+
+    & .line {
+      height: 3px;
+    }
+
+    & .bracket {
+      border-width: 3px;
+    }
+  }
+
+  .step-path {
+    font-size: 0.75rem;
+  }
+}
+
 @media screen and (min-width: 600px) {
   section-title[text="Contact"] + div {
-    font-size: 1.25rem;
+    font-size: 1.25em;
 
     & ul {
       padding-left: revert;
@@ -646,7 +680,7 @@ footer {
   }
 
   .quote-title h1 {
-    font-size: 2.5rem;
+    font-size: 2.5em;
   }
 
   .quote {
@@ -685,7 +719,7 @@ footer {
   .path-title {
     display: flex;
     justify-content: space-around;
-    font-size: 1.75rem;
+    font-size: 1.75em;
 
     & p {
       flex: 1;
@@ -745,10 +779,10 @@ footer {
   }
 
   .actual-position {
-    font-size: 1.3rem;
+    font-size: 1.3em;
 
     & p:first-child {
-      font-size: 1.5rem;
+      font-size: 1.4em;
     }
   }
 
