@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleTransition(event) {
       if (event.propertyName === "transform") {
         introContent.classList.add("active");
+        document.querySelector("header").classList.add("header-active")
         squareEdges[0].removeEventListener("transitionend", handleTransition);
         if (smartphoneQuery.matches) {
           squareEdges.forEach((square) => (square.style.display = "none"));
