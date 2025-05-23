@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Opening navigation/menu for small screen
 const openMenu = () => {
   const menu = document.querySelector("nav");
-  if (menu.className.includes("nav-active")) {
+  if (menu.classList.contains("nav-active")) {
     removeOverlay();
   } else {
     menu.classList.add("nav-active");
@@ -150,6 +150,9 @@ const addOverlayListeners = () => {
 // Click logo : scroll to top
 
 const scrollToTop = () => {
+  if (document.querySelector("nav").classList.contains("nav-active")) {
+    removeOverlay();
+  }
   window.scroll({
     top: 0,
     left: 0,
