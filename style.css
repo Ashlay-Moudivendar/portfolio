@@ -848,3 +848,14 @@ footer {
     }
   }
 }
+
+@media (pointer: coarse) {
+  .quote-nav button {
+    height: 20px;
+    width: 20px;
+
+    &:first-child {
+      margin-right: 0.5rem;
+    }
+  }
+}
