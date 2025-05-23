@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     const squareEdges = document.querySelectorAll(".square");
     const introContent = document.querySelector(".content");
+    const smartphoneQuery = window.matchMedia("(max-width: 767.97px)");
 
     for (const square of squareEdges) {
       square.classList.add("active");
@@ -79,7 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleTransition(event) {
       if (event.propertyName === "transform") {
         introContent.classList.add("active");
+        document.querySelector("header").classList.add("header-active")
         squareEdges[0].removeEventListener("transitionend", handleTransition);
+        if (smartphoneQuery.matches) {
+          squareEdges.forEach((square) => (square.style.display = "none"));
+        }
       }
     }
 
@@ -88,11 +93,70 @@ document.addEventListener("DOMContentLoaded", () => {
     introContent.addEventListener(
       "transitionend",
       () => {
-        document
-          .querySelectorAll("section:not(.intro)")
-          .forEach((section) => section.classList.add("active"));
+        document.querySelectorAll("section:not(.intro)").forEach((section) => section.classList.add("active"));
       },
       { once: true }
     );
   }, 500);
+
+  // Show project's detail
+  const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+  if (isTouchDevice) {
+    document.querySelectorAll(".project").forEach((project, index) => {
+      const hideProjectDetail = (event) => {
+        if (!project.contains(event.target)) {
+          project.classList.remove("project-active");
+          project.querySelector("div").classList.remove("project-active");
+          document.removeEventListener("touchstart", hideProjectDetail);
+        }
+      };
+
+      project.addEventListener("click", () => {
+        if (!project.classList.contains("project-active")) {
+          project.classList.add("project-active");
+          project.querySelector("div").classList.add("project-active");
+          document.addEventListener("touchstart", hideProjectDetail);
+        }
+      });
+    });
+  }
 });
+
+// Opening navigation/menu for small screen
+const openMenu = () => {
+  const menu = document.querySelector("nav");
+  if (menu.classList.contains("nav-active")) {
+    removeOverlay();
+  } else {
+    menu.classList.add("nav-active");
+    const heightMenu = document.querySelector("header").offsetHeight;
+    const overlay = document.querySelector(".overlay");
+    overlay.style.top = heightMenu + "px";
+    document.querySelector(".overlay").style.display = "block";
+    addOverlayListeners();
+  }
+};
+
+const removeOverlay = () => {
+  document.querySelector(".overlay").style.display = "none";
+  document.querySelector("nav").classList.remove("nav-active");
+};
+
+const addOverlayListeners = () => {
+  document.querySelectorAll("nav a").forEach((listener) => listener.addEventListener("click", removeOverlay));
+  document.querySelector(".overlay").addEventListener("touchstart", removeOverlay);
+};
+
+// Click logo : scroll to top
+
+const scrollToTop = () => {
+  if (document.querySelector("nav").classList.contains("nav-active")) {
+    removeOverlay();
+  }
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+};

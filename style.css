@@ -1,12 +1,7 @@
 :root {
   --golden-color: linear-gradient(to right, #ecc440, #fffa8a, #ddac17, #ffff95);
-  --golden-color-reverse: linear-gradient(
-    to left,
-    #ecc440,
-    #fffa8a,
-    #ddac17,
-    #ffff95
-  );
+  --golden-color-reverse: linear-gradient(to left, #ecc440, #fffa8a, #ddac17, #ffff95);
+  --semi-gold: linear-gradient(to right, #ecc440, #fffa8a);
   --yellow-golden: #ffff95;
   --white: #eef0fc;
   --timeline-color: orange;
@@ -23,10 +18,10 @@ html {
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 body {
-  background: #101d42;
   background: linear-gradient(#101d42, #1d28a0);
   background-attachment: fixed;
   color: var(--white);
@@ -35,7 +30,32 @@ body {
   padding-top: 3.65rem;
 }
 
+body::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  top: auto;
+  background-image: linear-gradient(#101d42, #1d28a0);
+  position: fixed;
+  z-index: -1;
+}
+
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 10rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
 header {
+  opacity: 0;
   background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(15px);
   box-shadow: 0 2px 10px black;
@@ -44,37 +64,66 @@ header {
   top: 0;
   right: 0;
   left: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
   align-items: center;
-  z-index: 1;
+  z-index: 3;
+  transition: opacity 0.3s ease-in-out;
 
-  & div {
+  &.header-active {
+    opacity: 1;
+  }
+
+  & > a:first-child {
     font-family: "Pacifico", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.5em;
+    width: fit-content;
+  }
+
+  & .menu-icon {
+    justify-self: end;
+    & img {
+      width: 1.5rem;
+    }
   }
 
   & nav {
-    display: flex;
-    gap: 2.5rem;
+    display: none;
 
     & a {
       text-decoration: none;
       color: inherit;
     }
+
+    &.nav-active {
+      display: flex;
+      padding: 1rem 0;
+      flex-direction: column;
+      gap: 2.5rem;
+      grid-column: 1 / span 2;
+      width: 100%;
+      align-items: center;
+      border-top: 3px solid;
+    }
   }
+}
+
+main,
+footer {
+  font-size: 1rem;
 }
 
 /* Introduction */
 
-.intro {
+#intro {
   display: flex;
-  justify-content: space-between;
-  height: 28rem;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .content {
-  width: 60rem;
   text-align: center;
   align-self: center;
   opacity: 0;
@@ -95,42 +144,43 @@ header {
   & p:first-child {
     font-weight: 600;
     font-family: Manrope;
-    font-size: 2.5rem;
+    font-size: 2.5em;
     margin: 0;
   }
 
   & p:nth-child(2) {
     font-family: Manrope;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: 200;
   }
 
   & p:last-child {
-    font-size: 1.25rem;
-    width: 80%;
+    font-size: 1.25em;
+    width: 90%;
     margin: auto;
     margin-top: 4rem;
   }
 }
 
 .square {
-  height: 7rem;
-  min-width: 7rem;
+  height: 3rem;
+  min-width: 3rem;
+  max-width: 3rem;
   border-width: 5px;
   border-style: solid;
   border-image-source: var(--golden-color);
   transition: all 0.6s ease-in-out;
+  position: absolute;
 }
 
 .sq-left-top {
   border-image-slice: 1 0 0 1;
   transform: translate(-50%, -50%);
-  position: relative;
   left: 50%;
   top: 50%;
 
   &.active {
-    transform: translate(0%, 0%);
+    transform: translate(-100%);
     left: 0;
     top: 0;
   }
@@ -139,20 +189,19 @@ header {
 .sq-right-bottom {
   border-image-slice: 0 1 1 0;
   align-self: flex-end;
-  transform: translate(50%, 46%);
-  position: relative;
+  transform: translate(49%, 41.5%);
   right: 50%;
   bottom: 50%;
 
   &.active {
-    transform: translate(0%, 0%);
+    transform: translate(100%);
     right: 0;
     bottom: 0;
   }
 }
 
 /* General section's settings */
-section:not(.intro) {
+section:not(#intro) {
   opacity: 0;
   transition: opacity 0.5s ease-in;
 
@@ -163,7 +212,7 @@ section:not(.intro) {
 
 .section-body {
   font-family: "Sora", sans-serif;
-  padding: 4rem 6rem 7rem;
+  padding: 4rem 1rem 7rem;
 }
 
 section-title:has(.section-title) {
@@ -175,10 +224,10 @@ section-title:has(.section-title) {
   align-items: center;
 
   & h1 {
-    padding: 0 2rem;
+    padding: 0;
     font-family: Manrope;
     font-weight: 700;
-    font-size: 2.25rem;
+    font-size: 2.25em;
     letter-spacing: 0.1em;
   }
 
@@ -213,51 +262,25 @@ section-title:has(.section-title) {
 
 /* Career path */
 
-& .path-title {
-  display: flex;
-  justify-content: space-around;
-  font-size: 1.75rem;
-
-  & p {
-    flex: 1;
-    text-align: center;
-    position: relative;
-
-    &::after {
-      content: "";
-      display: inline-block;
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 2.8rem;
-      height: 2.8rem;
-      position: relative;
-      left: 1rem;
-    }
-
-    &:first-child::after {
-      background-image: url("./assets/Cap.svg");
-      height: 2rem;
-      vertical-align: top;
-    }
-
-    &:last-child::after {
-      background-image: url("./assets/Suitcase\ work.svg");
-      height: 2.6rem;
-      vertical-align: bottom;
-    }
-  }
+.path-title {
+  display: none;
 }
 
 .path {
   margin-top: 3rem;
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: 1fr 5fr;
   grid-template-rows: repeat(5, auto);
-  row-gap: 3rem;
+  row-gap: 9em;
+}
+
+.timeline,
+.timeline-end,
+.timeline-point {
+  grid-column: 1;
 }
 
 .timeline {
-  grid-column: 2;
   grid-row: 1 / -1;
   position: relative;
   top: 0.625rem;
@@ -265,7 +288,7 @@ section-title:has(.section-title) {
   &::after {
     content: "";
     position: absolute;
-    width: 0.625rem;
+    width: 0.625em;
     top: 0;
     bottom: 0.625rem;
     left: 50%;
@@ -275,14 +298,13 @@ section-title:has(.section-title) {
 }
 
 .timeline-point {
-  grid-column: 2;
   position: relative;
 
   &::after {
     content: "";
     position: absolute;
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.25em;
+    height: 2.25em;
     background-color: var(--timeline-color);
     left: 50%;
     transform: translateX(-50%);
@@ -292,17 +314,15 @@ section-title:has(.section-title) {
 
 .timeline-end {
   position: relative;
-  grid-column: 2;
 
   &::after {
     content: "";
     position: absolute;
-    width: 15rem;
-    height: 0.625rem;
+    width: 7.5rem;
+    height: 0.625em;
     background-color: var(--timeline-color);
     left: 50%;
     bottom: 0;
-    transform: translate(-50%, 100%);
   }
 }
 
@@ -315,7 +335,7 @@ section-title:has(.section-title) {
   & .title-step {
     font-family: Manrope, sans-serif;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.5em;
   }
 
   & .location-step {
@@ -325,27 +345,23 @@ section-title:has(.section-title) {
   }
 
   & .content-step {
-    font-size: 1.2rem;
+    font-size: 1.2em;
     font-weight: 300;
     background-color: rgba(0, 0, 0, 0.4);
     padding: 1.25rem;
     border-radius: 10px;
     width: fit-content;
-    margin: 1.25rem 0 0 0.625rem;
+    margin-top: 1.25rem;
     opacity: 0;
   }
 }
 
-.step-path:last-child {
-  padding-bottom: 6rem;
+step-item:last-of-type {
+  padding-bottom: 8em;
 }
 
-.training-item {
-  grid-column: 1;
-}
-
-.job-item {
-  grid-column: 3;
+step-item {
+  grid-column: 2;
 }
 
 .actual-position {
@@ -353,37 +369,40 @@ section-title:has(.section-title) {
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
+  font: 1.5em Manrope, sans-serif;
 
   & p {
-    font: 1.3rem Manrope, sans-serif;
     margin: 0.7rem 0;
 
     &:first-child {
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.15em;
       margin-bottom: 1rem;
+      text-align: center;
     }
   }
 }
 
 /* Skill's section */
-section-title[text="Compétences"] + div {
+section-title[text="Compétences"] + .section-body {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4rem;
 }
 
 .skill {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.7em;
   font-weight: 600;
   width: fit-content;
 
   & > p {
     margin-top: 0;
     & .rank {
-      font-size: 4rem;
+      font-size: 2em;
     }
   }
 }
@@ -395,16 +414,16 @@ section-title[text="Compétences"] + div {
 }
 
 .star {
-  width: 40px;
-  height: 20px;
+  width: 2rem;
+  height: 1rem;
   border: 3px solid;
   transform: skew(-20deg);
-  border-image-source: var(--golden-color);
+  border-image-source: var(--semi-gold);
   border-image-slice: 1;
 }
 
 .star-completed {
-  background-image: var(--golden-color);
+  background-image: var(--semi-gold);
 }
 
 .star-not-completed {
@@ -420,8 +439,8 @@ section-title[text="Projets"] + .section-body {
 }
 
 .project {
-  width: 15rem;
-  height: 14rem;
+  width: 15em;
+  height: 14em;
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: center;
@@ -429,7 +448,7 @@ section-title[text="Projets"] + .section-body {
   overflow: hidden;
   transition: box-shadow 0.4s ease-in-out;
 
-  &:hover {
+  &.project-active {
     box-shadow: 0px 0px 1rem 10px var(--white);
   }
 
@@ -440,15 +459,17 @@ section-title[text="Projets"] + .section-body {
     align-items: center;
     height: 100%;
     opacity: 0;
+    pointer-events: none;
     background-color: rgba(0, 0, 0, 0.9);
     transition: opacity 0.5s ease-in-out;
 
-    &:hover {
+    &.project-active {
+      pointer-events: auto;
       opacity: 1;
     }
 
     & p {
-      font-size: 1.25rem;
+      font-size: 1.25em;
       text-align: center;
       margin: 0;
     }
@@ -466,7 +487,7 @@ section-title[text="Projets"] + .section-body {
       transition-duration: 0.3s;
       transition-timing-function: ease-in-out;
 
-      &:hover {
+      &:active {
         background-color: var(--white);
         color: black;
       }
@@ -477,7 +498,11 @@ section-title[text="Projets"] + .section-body {
 /* Contact */
 
 section-title[text="Contact"] + div {
-  font-size: 1.25rem;
+  font-size: 1.1em;
+
+  & ul {
+    padding-left: 1.5rem;
+  }
 }
 
 .link-linkedin {
@@ -499,7 +524,7 @@ section-title[text="Contact"] + div {
   transition: color 0.3s ease-out;
 }
 
-#download-btn:hover {
+#download-btn:active {
   color: #101d42;
   background-clip: border-box;
 }
@@ -519,7 +544,7 @@ section-title[text="Contact"] + div {
 
   & h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 2em;
   }
 }
 
@@ -550,8 +575,8 @@ section-title[text="Contact"] + div {
 .quote {
   font-style: italic;
   font-family: Inter, sans-serif;
-  font-size: 1.25rem;
-  padding: 0 4rem;
+  font-size: 1.25em;
+  padding: 0 1.5rem;
   flex: 0 1 100%;
   font-weight: 300;
   display: flex;
@@ -571,7 +596,8 @@ section-title[text="Contact"] + div {
 /* Footer */
 footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  row-gap: 1rem;
   align-items: center;
   padding: 1rem 2rem;
   background-color: #101d42;
@@ -579,13 +605,257 @@ footer {
 
 .links {
   display: flex;
-  gap: 0.8rem;
+  column-gap: 1.2rem;
   & img {
-    width: 1.5rem;
+    width: 1.8rem;
     height: auto;
   }
 
   & a {
     display: inline-flex;
+  }
+}
+
+/* Responsive Design */
+
+@media screen and (max-width: 599px) {
+  main,
+  footer {
+    font-size: 0.8rem;
+  }
+
+  #intro .content {
+    font-size: 0.8rem;
+  }
+
+  .section-title {
+    & h1 {
+      font-size: 1.8em;
+    }
+
+    & .line {
+      height: 3px;
+    }
+
+    & .bracket {
+      border-width: 3px;
+    }
+  }
+
+  .step-path {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  section-title[text="Contact"] + div {
+    font-size: 1.25em;
+
+    & ul {
+      padding-left: revert;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header {
+    opacity: 1;
+    & .menu-icon {
+      display: none;
+    }
+    & nav {
+      display: flex;
+      gap: 2.5rem;
+      justify-self: end;
+    }
+  }
+
+  #intro {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 28rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .section-title h1 {
+    padding: 0 2rem;
+  }
+
+  .square {
+    position: relative;
+    height: 3.5rem;
+    min-width: 3.5rem;
+
+    &.active {
+      transform: translate(0%, 0%);
+    }
+  }
+
+  .sq-right-bottom {
+    transform: translate(49%, 42.5%);
+  }
+
+  .quote-title h1 {
+    font-size: 2.5em;
+  }
+
+  .quote {
+    padding: 0 4rem;
+  }
+
+  footer {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #intro {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .square {
+    height: 7rem;
+    min-width: 7rem;
+  }
+
+  .sq-right-bottom {
+    transform: translate(50%, 46%);
+  }
+
+  .section-body {
+    padding: 4rem 6rem 7rem;
+  }
+
+  #parcours + .section-body {
+    padding: 4rem 4rem 7rem;
+  }
+
+  .path-title {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.75em;
+
+    & p {
+      flex: 1;
+      text-align: center;
+      position: relative;
+
+      &::after {
+        content: "";
+        display: inline-block;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 2.8rem;
+        height: 2.8rem;
+        position: relative;
+        left: 1rem;
+      }
+
+      &:first-child::after {
+        background-image: url("./assets/Cap.svg");
+        height: 2rem;
+        vertical-align: top;
+      }
+
+      &:last-child::after {
+        background-image: url("./assets/Suitcase\ work.svg");
+        height: 2.6rem;
+        vertical-align: bottom;
+      }
+    }
+  }
+
+  .path {
+    grid-template-columns: 2fr 1fr 2fr;
+  }
+
+  .timeline,
+  .timeline-end,
+  .timeline-point {
+    grid-column: 2;
+  }
+
+  .timeline-end::after {
+    width: 15rem;
+    transform: translate(-50%, 50%);
+  }
+
+  .step-path .content-step {
+    margin-left: 0.625rem;
+  }
+
+  .training-item {
+    grid-column: 1;
+  }
+
+  .job-item {
+    grid-column: 3;
+  }
+
+  .actual-position {
+    font-size: 1.3em;
+
+    & p:first-child {
+      font-size: 1.4em;
+    }
+  }
+
+  section-title[text="Compétences"] + .section-body {
+    flex-direction: row;
+    padding: 4rem 4rem 7rem;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #intro .content p:last-child {
+    width: 80%;
+  }
+
+  #parcours + .section-body {
+    padding: 4rem 6rem 7rem;
+  }
+
+  section-title[text="Compétences"] + .section-body {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #download-btn:hover {
+    color: #101d42;
+    background-clip: border-box;
+  }
+
+  .project {
+    &:hover {
+      box-shadow: 0px 0px 1rem 10px var(--white);
+    }
+
+    & div {
+      pointer-events: auto;
+      & button:hover {
+        background-color: var(--white);
+        color: black;
+      }
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media (pointer: coarse) {
+  .quote-nav button {
+    height: 20px;
+    width: 20px;
+
+    &:first-child {
+      margin-right: 0.5rem;
+    }
   }
 }
