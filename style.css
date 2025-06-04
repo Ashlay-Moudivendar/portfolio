@@ -435,7 +435,9 @@ section-title[text="Compétences"] + .section-body {
 
 section-title[text="Projets"] + .section-body {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  row-gap: 5em;
 }
 
 .project {
