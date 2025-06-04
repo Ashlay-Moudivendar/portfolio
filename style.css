@@ -464,6 +464,7 @@ section-title[text="Projets"] + .section-body {
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0.9);
     transition: opacity 0.5s ease-in-out;
+    padding: 0 1.1em;
 
     &.project-active {
       pointer-events: auto;
