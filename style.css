@@ -435,12 +435,14 @@ section-title[text="Compétences"] + .section-body {
 
 section-title[text="Projets"] + .section-body {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  row-gap: 5em;
 }
 
 .project {
   width: 15em;
-  height: 14em;
+  height: 15em;
   background-size: contain;
   background-repeat: no-repeat;
   background-position-y: center;
@@ -462,6 +464,7 @@ section-title[text="Projets"] + .section-body {
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0.9);
     transition: opacity 0.5s ease-in-out;
+    padding: 0 1.1em;
 
     &.project-active {
       pointer-events: auto;
