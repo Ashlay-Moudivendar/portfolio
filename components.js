@@ -44,12 +44,13 @@ class Project extends HTMLElement {
     const description = this.getAttribute("description") || "No description";
     const websiteLink = this.getAttribute("link") || "#";
     const imgPath = this.getAttribute("img") || "";
+    const textButton = websiteLink.includes("github") ? "Voir le code" : "Voir le site";
 
     this.innerHTML = `
       <div class="project" style="background-image: url(${imgPath}), linear-gradient(#e0e1e2,#e0e1e2)">
         <div>
           <p>${description}</p>
-          <a href="${websiteLink}" target="_blank"><button>Voir le site</button></a>
+          <a href="${websiteLink}" target="_blank"><button>${textButton}</button></a>
         </div>
       </div>
     `;
